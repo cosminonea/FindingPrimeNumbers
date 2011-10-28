@@ -35,21 +35,24 @@ namespace Prime.Tests
         [TestMethod]
         public void PerformanceTest()
         {
-            Debug.WriteLine(DateTime.Now);
+            var stopwatch = new Stopwatch();
+            stopwatch.Start();
             var primeCalculator = new TableLookupPrimeStrategy();
 
-            Debug.WriteLine(DateTime.Now);
+            Debug.WriteLine(stopwatch.ElapsedMilliseconds);
+
+            stopwatch.Restart();
 
             // all these results should come far quicker than from other calculators
             primeCalculator.FindPrimesLessThan(100).ToList();
 
-            Debug.WriteLine(DateTime.Now);
+            Debug.WriteLine(stopwatch.ElapsedMilliseconds);
             primeCalculator.FindPrimesLessThan(100).ToList();
 
-            Debug.WriteLine(DateTime.Now);
+            Debug.WriteLine(stopwatch.ElapsedMilliseconds);
             primeCalculator.FindPrimesLessThan(100).ToList();
 
-            Debug.WriteLine(DateTime.Now);
+            Debug.WriteLine(stopwatch.ElapsedMilliseconds);
         }
     }
 }
