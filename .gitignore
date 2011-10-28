@@ -1,0 +1,15 @@
+*.suo
+*.user
+
+bin
+obj
+_ReSharper*
+
+*.cache
+*~
+*.swp
+*.bak
+*.orig
+
+# osx noise
+.DS_Store
