@@ -37,6 +37,7 @@ namespace PrimeNumbers
 
         private void FindAndCacheAllPrimes(int maxValue)
         {
+            // here we could as well read them from a file or some pre-calculated list
             var primeCalculator = new EratosthenesSieveStrategy();
             primes = primeCalculator.FindPrimesLessThan(maxValue).ToArray();
         }
