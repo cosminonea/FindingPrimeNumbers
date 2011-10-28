@@ -1,6 +1,8 @@
 namespace Prime.Tests
 {
+    using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Linq;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -11,7 +13,7 @@ namespace Prime.Tests
     public class TableLookupPrimeStrategyTest
     {
         [TestMethod]
-        public void ReturnRightNumbers()
+        public void ReturnRightPrimes()
         {
             var primeCalculator = new TableLookupPrimeStrategy();
 
@@ -21,7 +23,7 @@ namespace Prime.Tests
         }
 
         [TestMethod]
-        public void ReturnRightNumbersForABiggerHighLimit()
+        public void ReturnRightPrimesForABiggerHighLimit()
         {
             var primeCalculator = new TableLookupPrimeStrategy();
 
@@ -30,5 +32,24 @@ namespace Prime.Tests
             Assert.IsTrue(primes.SequenceEqual(new[] { 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97 }));
         }
 
+        [TestMethod]
+        public void PerformanceTest()
+        {
+            Debug.WriteLine(DateTime.Now);
+            var primeCalculator = new TableLookupPrimeStrategy();
+
+            Debug.WriteLine(DateTime.Now);
+
+            // all these results should come far quicker than from other calculators
+            primeCalculator.FindPrimesLessThan(100).ToList();
+
+            Debug.WriteLine(DateTime.Now);
+            primeCalculator.FindPrimesLessThan(100).ToList();
+
+            Debug.WriteLine(DateTime.Now);
+            primeCalculator.FindPrimesLessThan(100).ToList();
+
+            Debug.WriteLine(DateTime.Now);
+        }
     }
 }

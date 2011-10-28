@@ -6,28 +6,20 @@ namespace PrimeNumbers
     public class TableLookupPrimeStrategy : Prime
     {
         #region Constants and Fields
-
-        private int[] primes;
-
-        #endregion
-
-        #region Constructors and Destructors
-
-        public TableLookupPrimeStrategy()
-        {
-            FindAndCacheAllPrimes(100000);
-        }
+        // this really hurts performance during the first hit
+        private static readonly int[] Primes = FindAndCacheAllPrimes(100000); 
 
         #endregion
+
 
         #region Public Methods
 
         public override IEnumerable<int> FindPrimesLessThan(int number)
         {
-            int length = primes.Length;
-            for (int i = 0; i <= length && primes[i] <= number; i++)
+            int length = Primes.Length;
+            for (int i = 0; i <= length && Primes[i] <= number; i++)
             {
-                yield return primes[i];
+                yield return Primes[i];
             }
         }
 
@@ -35,11 +27,11 @@ namespace PrimeNumbers
 
         #region Methods
 
-        private void FindAndCacheAllPrimes(int maxValue)
+        private static int[] FindAndCacheAllPrimes(int maxValue)
         {
             // here we could as well read them from a file or some pre-calculated list
             var primeCalculator = new EratosthenesSieveStrategy();
-            primes = primeCalculator.FindPrimesLessThan(maxValue).ToArray();
+            return primeCalculator.FindPrimesLessThan(maxValue).ToArray();
         }
 
         #endregion
