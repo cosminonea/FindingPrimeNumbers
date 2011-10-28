@@ -1,6 +1,7 @@
 ﻿namespace PrimeNumbers
 {
     using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
 
     public abstract class Prime
     {

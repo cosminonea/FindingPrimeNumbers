@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EratosthenesSieveStrategyTest.cs" />
+    <Compile Include="TableLookupPrimeStrategyTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PrimeNumbers\PrimeNumbers.csproj">
